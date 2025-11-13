@@ -229,30 +229,12 @@ FROM sales_orders AS so
 JOIN customers        AS c  ON c.id = so.customer_id
 JOIN customer_groups  AS cg ON cg.id = c.group_id
 WHERE cg.name IN ('B2B', 'Modern Trade', 'Horeca', 'Wholesale', 'Grocery Store', 'Intercompany')
+-- cg.name IN ('B2C', 'Employee B2C', 'Individual B2C')
+-- cg.name IN ('Coporate', 'Employee Corp', 'Individual Corp')
   AND so.order_date >= NOW() - INTERVAL 60 DAY
   AND so.order_date <  NOW() -- optional, keeps range half-open
   AND so.business_id = '84093770-29ad-4e8e-9da1-babe583c0d69';
  -- AND so.current_status = 'confirmed';  
- 
--- All B2C sales orders in the last 60 days
-SELECT COUNT(*) AS b2b_orders_last_60d
-FROM sales_orders AS so
-JOIN customers        AS c  ON c.id = so.customer_id
-JOIN customer_groups  AS cg ON cg.id = c.group_id
-WHERE cg.name IN ('B2C', 'Employee B2C', 'Individual B2C')
-  AND so.order_date >= NOW() - INTERVAL 60 DAY
-  AND so.order_date <  NOW() -- optional, keeps range half-open
-  AND so.business_id = '84093770-29ad-4e8e-9da1-babe583c0d69';
- 
--- all coporate sales orders in the last 60 days
-SELECT COUNT(*) AS b2b_orders_last_60d
-FROM sales_orders AS so
-JOIN customers        AS c  ON c.id = so.customer_id
-JOIN customer_groups  AS cg ON cg.id = c.group_id
-WHERE cg.name IN ('Coporate', 'Employee Corp', 'Individual Corp')
-  AND so.order_date >= NOW() - INTERVAL 60 DAY
-  AND so.order_date <  NOW() -- optional, keeps range half-open
-  AND so.business_id = '84093770-29ad-4e8e-9da1-babe583c0d69';
   
 -- Customer misconfiguration
 SELECT COUNT(*) AS customer_misconfiguration
