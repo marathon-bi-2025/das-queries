@@ -21,7 +21,7 @@ on sod.sales_order_id = so.id
 left join customers as cus
 on so.customer_id = cus.id
 left join customer_groups as cusg
-on cus.group_id = cusg.name
+on cus.group_id = cusg.id
 left join price_lists as pl
 on cusg.price_list_id = pl.id
 left join billing_addresses as ba
