@@ -12,7 +12,7 @@ desc histories;
 show tables like '%categories%';
 show tables like '%customer%';
 show tables like '%township%';
-
+show tables like '%branch%';
 -- TABLES
 
 select * from products;
@@ -32,6 +32,7 @@ select * from billing_addresses;
 select * from townships;
 select * from states;
 select * from sales_people;
+select * from branches;
 
 
 -- EXECUTIONS

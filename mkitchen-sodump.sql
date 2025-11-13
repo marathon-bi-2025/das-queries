@@ -1,5 +1,5 @@
 select 
-sod.sales_order_id, so.current_status, so.updated_at, h.action_type, h.user_name, h.created_at, sod.name, sp.name,
+sod.sales_order_id, so.order_number, so.reference_number, b.name, so.current_status, so.updated_at, h.action_type, h.user_name, h.created_at, sod.name, sp.name,
 sod.batch_number, sod.detail_qty, sod.detail_unit_rate, sod.detail_discount, p.sku, 
 pc.name, pc1.name, pc2.name, so.customer_id, cus.name,
 cusg.name, pl.name, ba.attention, ba.address, ba.country, ba.city,
@@ -32,6 +32,8 @@ left join townships as ts
 on ba.township_id = ts.id
 left join sales_people as sp
 on so.sales_person_id = sp.id
+left join branches as b
+on b.id = so.branch_id
 
 where h.reference_type = 'sales_orders'
 and h.business_id = '84093770-29ad-4e8e-9da1-babe583c0d69'
