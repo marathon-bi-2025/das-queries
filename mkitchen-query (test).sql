@@ -1,5 +1,4 @@
 use `das-db`;
-set @mk := '84093770-29ad-4e8e-9da1-babe583c0d69';
 
 -- TABLE SEARCH
 show tables like '%order%';
@@ -8,11 +7,13 @@ show tables like '%histories%';
 show tables like '%reference%';
 show tables like '%user%';
 show tables like '%sale%';
-desc histories;
 show tables like '%categories%';
 show tables like '%customer%';
 show tables like '%township%';
 show tables like '%branch%';
+show tables like '%delivery%';
+
+
 -- TABLES
 
 select * from products;
@@ -33,16 +34,6 @@ select * from townships;
 select * from states;
 select * from sales_people;
 select * from branches;
+select * from delivery_methods;
 
 
--- EXECUTIONS
-select * from sales_order_details
-where id = @mk;
-
-select * from sales_order_details;
-
-set @mk := '84093770-29ad-4e8e-9da1-babe583c0d69';
-select * from sales_order_details as s
-left join products as p
-on s.product_id = p.id
-where p.business_id = @mk;
